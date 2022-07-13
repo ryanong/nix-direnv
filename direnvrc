@@ -339,7 +339,8 @@ use_nix() {
                      --extra-experimental-features "nix-command flakes" \
                      --profile "$tmp_profile" \
                      --impure \
-                     "${extra_args[@]}")
+                     "${extra_args[@]}" \
+                     | grep -vE "(EPOCHREALTIME|EPOCHSECONDS|LINENO)")
 
     local drv
     drv=$(_nix_direnv_realpath "$tmp_profile")
